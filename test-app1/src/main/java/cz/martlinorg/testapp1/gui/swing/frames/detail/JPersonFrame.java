@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import cz.martlin.jukebox.mid.model.attr.Attribute;
 import cz.martlin.jukebox.mid.model.type.GeneralCompositeType;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
+import cz.martlin.jukebox.out.gui.swing.frames.BaseRecordFrame;
 import cz.martlin.jukebox.out.gui.swing.validation.ValidationReport;
 import cz.martlinorg.testapp1.dataobj.Person;
 

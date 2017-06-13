@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import cz.martlin.jukebox.out.dataobj.Record;
+import cz.martlin.jukebox.out.dataobj.Subrecord;
+import cz.martlin.jukebox.out.db.Database;
 import cz.martlinorg.testapp1.dataobj.Person;
-import cz.martlinorg.testapp1.impl.dataobj.Record;
-import cz.martlinorg.testapp1.impl.dataobj.Subrecord;
-import cz.martlinorg.testapp1.impl.db.Database;
-import cz.martlinorg.testapp1.impl.model.RecordType;
+import cz.martlinorg.testapp1.model.TypeOfRecord;
 
 public class SomeDatabase implements Database {
 
@@ -20,12 +20,12 @@ public class SomeDatabase implements Database {
 	}
 
 	@Override
-	public <T extends Record> List<T> list(RecordType type) {
+	public <T extends Record> List<T> list(TypeOfRecord type) {
 		return (List<T>) persons;
 	}
 
 	@Override
-	public <T extends Record> T get(RecordType type, Object identifier) {
+	public <T extends Record> T get(TypeOfRecord type, Object identifier) {
 		return (T) persons.get(0);
 	}
 

@@ -9,13 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import cz.martlin.jukebox.out.db.Database;
+import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
+import cz.martlin.jukebox.out.gui.swing.frames.BaseObjectsTableFrame;
+import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
 import cz.martlinorg.testapp1.dataobj.Person;
 import cz.martlinorg.testapp1.gui.swing.frames.tables.JPersonsFrame;
-import cz.martlinorg.testapp1.impl.db.Database;
-import cz.martlinorg.testapp1.impl.gui.swing.frames.BaseFrame;
-import cz.martlinorg.testapp1.impl.gui.swing.frames.BaseObjectsTableFrame;
-import cz.martlinorg.testapp1.impl.gui.swing.util.UIUtils;
-import cz.martlinorg.testapp1.impl.model.RecordType;
+import cz.martlinorg.testapp1.model.TypeOfRecord;
 import cz.martlinorg.testapp1.rest.ProjectConfiguration;
 
 public class JMainFrame extends BaseFrame {
@@ -29,7 +29,7 @@ public class JMainFrame extends BaseFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			List<Person> persons = database.list(RecordType.PERSON);
+			List<Person> persons = database.list(TypeOfRecord.PERSON);
 			BaseObjectsTableFrame<Person> frame = new JPersonsFrame(owner, persons);
 			frame.openFrame();
 		}

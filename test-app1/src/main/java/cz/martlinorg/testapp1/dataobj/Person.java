@@ -1,8 +1,8 @@
 package cz.martlinorg.testapp1.dataobj;
 
-import cz.martlinorg.testapp1.impl.dataobj.Record;
-import cz.martlinorg.testapp1.impl.model.GeneralType;
-import cz.martlinorg.testapp1.impl.model.RecordType;
+import cz.martlin.jukebox.mid.model.type.GeneralType;
+import cz.martlin.jukebox.out.dataobj.Record;
+import cz.martlinorg.testapp1.model.TypeOfRecord;
 
 public class Person implements Record {
 
@@ -31,6 +31,6 @@ public class Person implements Record {
 
 	@Override
 	public GeneralType getType() {
-		return RecordType.PERSON;
+		return TypeOfRecord.PERSON;
 	}
 }

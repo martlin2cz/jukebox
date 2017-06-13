@@ -2,6 +2,7 @@ package cz.martlin.jukebox.mid.domains;
 
 import cz.martlin.jukebox.mid.domain.Domain;
 import cz.martlin.jukebox.mid.model.type.DomainTypeDescriptor;
+import cz.martlin.jukebox.mid.type.BaseType;
 import cz.martlin.jukebox.rest.exceptions.NotDomainValueException;
 import cz.martlinorg.testapp1.rest.Specifications;
 
@@ -19,6 +20,15 @@ public class HumanName implements Domain {
 		return name;
 	}
 
+	
+
+	@Override
+	public BaseType getBaseType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends Domain> DomainTypeDescriptor<T> getDescriptor() {

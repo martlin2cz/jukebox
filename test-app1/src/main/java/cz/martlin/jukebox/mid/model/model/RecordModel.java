@@ -9,6 +9,7 @@ import cz.martlin.jukebox.mid.model.misc.ModelUtils;
 public class RecordModel {	//TODO RecordModel? And what about Subrecord model (each should have parent(s))? And whre is da class?
 	private final String name;
 	private final Attribute identifierAttribute;
+	//TODO has ordering? is ordered? order attributes?
 
 	private final List<Attribute> onlyPrimaryAttributes;
 	private final List<Attribute> onlySecondaryAttributes;

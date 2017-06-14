@@ -1,6 +1,5 @@
 package cz.martlin.jukebox.rest;
 
-import cz.martlin.jukebox.mid.model.model.DataModel;
 import cz.martlin.jukebox.out.db.Database;
 import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.rest.exceptions.JukeboxException;
@@ -12,6 +11,7 @@ public class ProjectConfiguration {
 													// load
 													// or
 													// what
+	
 	private final String appName;
 	private final int revision;
 	private final DataModel model;

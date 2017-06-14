@@ -2,25 +2,34 @@ package cz.martlin.jukebox.out.db;
 
 import java.util.List;
 
-import cz.martlin.jukebox.mid.type.TypeOfRecord;
-import cz.martlin.jukebox.out.dataobj.Record;
-import cz.martlin.jukebox.out.dataobj.Subrecord;
+import cz.martlin.jukebox.mid.types.TypeOfStructure;
+import cz.martlin.jukebox.out.dataobj.Structure;
 
 public interface Database {
 
-	public <T extends Record> List<T> list(TypeOfRecord type);
+	public <S extends Structure> List<S> list(TypeOfStructure type);
 
-	public <T extends Record> T get(TypeOfRecord type, Object identifier);
+	public <S extends Structure, I> S get(TypeOfStructure type, I identifier);
+/*
+	public <T extends Record<I>, I> void create(Record<I> record);
 
-	public <T extends Record> void create(Record record);
+	public <T extends Record<I>, I> void update(Record<I> record);
 
-	public <T extends Record> void update(Record record);
+	public <T extends Record<I>, I> void delete(Record<I> record);
+*/
+	public <S extends Structure> void create(Structure structure);
 
-	public <T extends Record> void delete(Record record);
+	public <S extends Structure> void update(Structure structure);
 
-	public <T extends Subrecord> void create(Record owner, Subrecord record);
+	public <S extends Structure> void delete(Structure structure);
 
-	public <T extends Subrecord> void update(Record owner, Subrecord record);
+	
+	/*
+  //TODO subrecords mechanism
+	public <T extends Subrecord> void create(Record<I> owner, Subrecord record);
 
-	public <T extends Subrecord> void delete(Record owner, Subrecord record);
+	public <T extends Subrecord> void update(Record<I> owner, Subrecord record);
+
+	public <T extends Subrecord> void delete(Record<I> owner, Subrecord record);
+*/
 }

@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 import cz.martlin.jukebox.mid.model.attr.Attribute;
-import cz.martlin.jukebox.out.dataobj.Record;
+import cz.martlin.jukebox.out.dataobj.Structure;
 import cz.martlin.jukebox.rest.exceptions.UnknownRecordTypeException;
 
 public class ModelUtils {
 
-	public static Object getAt(Record record, Attribute attr) {
+	public static Object getAt(Structure record, Attribute attr) {
 /*
 		if (record.getType() == TypeOfRecord.PERSON && attr.getName().equals("name")) {
 			return ((Person) record).getName();

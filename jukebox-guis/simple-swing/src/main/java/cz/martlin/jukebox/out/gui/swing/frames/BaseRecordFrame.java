@@ -12,30 +12,31 @@ import javax.swing.JPanel;
 
 import cz.martlin.jukebox.mid.domain.DomainConverter;
 import cz.martlin.jukebox.mid.model.attr.Attribute;
-import cz.martlin.jukebox.mid.model.model.RecordModel;
-import cz.martlin.jukebox.mid.model.type.DomainTypeDescriptor;
-import cz.martlin.jukebox.mid.model.type.GeneralCompositeType;
-import cz.martlin.jukebox.out.dataobj.Record;
+import cz.martlin.jukebox.mid.model.model.StructureModel;
+import cz.martlin.jukebox.mid.types.TypeOfStructure;
+import cz.martlin.jukebox.out.dataobj.Structure;
 import cz.martlin.jukebox.out.db.Database;
 import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
 import cz.martlin.jukebox.out.gui.swing.validation.ValidationReport;
 import cz.martlin.jukebox.rest.ProjectConfiguration;
 
-public abstract class BaseRecordFrame extends BaseFrame {
+public abstract class BaseRecordFrame<S extends Structure> extends BaseFrame {
+
+	private static final long serialVersionUID = -5070439411869982612L;
 
 	protected final Database database;
-	protected final RecordModel model;
-	private final GUIProvider provider;
-	protected final Record record;
+	protected final StructureModel<S> model;
+	private final GUIProvider<JComponent, BaseFrame> provider;
+	protected final S record;
 
-	public BaseRecordFrame(BaseFrame owner, GeneralCompositeType type, Record record) {
+	public BaseRecordFrame(BaseFrame owner, TypeOfStructure type, S record) {
 		super(owner, UIUtils.getFrameTitle(type));
 
 		ProjectConfiguration config = ProjectConfiguration.get();
 		this.database = config.getDatabase();
 		this.model = config.getModel().getModelOf(type);
-		this.provider = config.getGuiProvider();
+		this.provider = (GUIProvider<JComponent, BaseFrame>) config.getGuiProvider();
 
 		this.record = record;
 	}
@@ -79,18 +80,18 @@ public abstract class BaseRecordFrame extends BaseFrame {
 
 	protected void doUpdateData() {
 		if (record != null) {
-			recordToForm(record);
+			structureToForm(record);
 		} else {
 			defaultsToForm();
 		}
 
 	}
 
-	protected abstract void recordToForm(Record record);
+	protected abstract void structureToForm(S structure);
 
 	protected abstract void defaultsToForm();
 
-	protected abstract void formToRecord(Record record);
+	protected abstract void formToStructure(S structure);
 
 	protected void close() {
 		// TODO confirm before close?
@@ -105,11 +106,11 @@ public abstract class BaseRecordFrame extends BaseFrame {
 		}
 
 		if (record == null) {
-			Record record = model.createNewInstance();
-			formToRecord(record);
+			S record = model.getNewDataobjInstance();
+			formToStructure(record);
 			database.create(record);
 		} else {
-			formToRecord(record);
+			formToStructure(record);
 			database.update(record);
 		}
 
@@ -125,7 +126,8 @@ public abstract class BaseRecordFrame extends BaseFrame {
 
 	protected boolean isValid(Attribute attribute, JComponent component) {
 		String value = provider.getValueOf(component);
-		DomainConverter<?> converter = (DomainTypeDescriptor<?>) attribute.getType();
+		DomainConverter<?> converter = null; // RecordLink has also have some
+												// Descriptor, ya?!
 		return converter.isValidHumanOutput(value);
 	}
 

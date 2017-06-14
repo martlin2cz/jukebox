@@ -1,13 +1,20 @@
 package cz.martlin.jukebox.mid.types;
 
-import cz.martlin.jukebox.mid.type.CompositeType;
+public class TypeOfSubrecord implements TypeOfStructure {
+	private final Class<?> clazz;
 
-public class TypeOfSubrecord implements CompositeType {
+	public TypeOfSubrecord(Class<?> clazz) {
+		super();
+		this.clazz = clazz;
+	}
+
+	@Override
+	public Class<?> getClazz() {
+		return clazz;
+	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return clazz.getSimpleName();
 	}
-	//TODO some general parent ?
 }

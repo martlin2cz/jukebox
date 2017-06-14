@@ -1,18 +1,18 @@
 package cz.martlinorg.testapp1.dataobj;
 
-import cz.martlin.jukebox.mid.model.type.GeneralType;
 import cz.martlin.jukebox.out.dataobj.Record;
-import cz.martlinorg.testapp1.model.TypeOfRecord;
 
-public class Person implements Record {
+public class Person extends Record<String> {
 
 	private String name;
 
 	public Person() {
-		// TODO Auto-generated constructor stub
+		super(Person.class);
 	}
 
 	public Person(String name) {
+		super(Person.class);
+
 		this.name = name;
 	}
 
@@ -25,12 +25,7 @@ public class Person implements Record {
 	}
 
 	@Override
-	public Object getIdentifier() {
+	public String getIdentifier() {
 		return name;
-	}
-
-	@Override
-	public GeneralType getType() {
-		return TypeOfRecord.PERSON;
 	}
 }

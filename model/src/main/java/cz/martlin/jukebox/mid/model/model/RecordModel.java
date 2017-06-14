@@ -5,7 +5,7 @@ import java.util.List;
 import cz.martlin.jukebox.mid.model.attr.Attribute;
 import cz.martlin.jukebox.out.dataobj.Record;
 
-public class RecordModel<S extends Record<S>> extends StructureModel<S> {
+public class RecordModel<S extends Record<?>> extends StructureModel<S> {
 
 	private final Attribute identifierAttribute;
 

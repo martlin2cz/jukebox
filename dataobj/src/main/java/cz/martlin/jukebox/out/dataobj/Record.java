@@ -4,10 +4,14 @@ import cz.martlin.jukebox.mid.types.TypeOfRecord;
 
 public abstract class Record<I> extends Structure {
 
-	public Record(TypeOfRecord type) {
-		super(type);
+	public Record(Class<?> clazz) {
+		super(new TypeOfRecord(clazz));
 	}
 
 	public abstract I getIdentifier();
+
+	public TypeOfRecord getType() {
+		return getType();
+	}
 
 }

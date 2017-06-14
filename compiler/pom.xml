@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>${jukebox.project.version}</version>
+		<version>0.1.0</version>
 	</parent>
 
 	<artifactId>compiler</artifactId>
@@ -16,13 +16,13 @@
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>commons</artifactId>
-			<version>${jukebox.project.version}</version>
+			<version>0.1.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>model</artifactId>
-			<version>${jukebox.project.version}</version>
+			<version>0.1.0</version>
 		</dependency>
 	</dependencies>
 </project>

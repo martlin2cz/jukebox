@@ -6,11 +6,13 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.1.0</version>
 	</parent>
+
 	<artifactId>test-app1</artifactId>
-	<name>test-app1</name>
-	<url>http://maven.apache.org</url>
+	<name>Testing app 1</name>
+	<description>Simple app with one record (Person), some "in-memory" database and simple swing GUI</description>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -21,12 +23,19 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-<!-- 
+
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>compiler</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.1.0</version>
 		</dependency>
-		 -->
+
+		<dependency>
+			<groupId>cz.martlin</groupId>
+			<artifactId>simple-swing</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+
+
 	</dependencies>
 </project>

@@ -4,11 +4,10 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import cz.martlin.jukebox.out.dataobj.Record;
-import cz.martlin.jukebox.out.dataobj.Subrecord;
+import cz.martlin.jukebox.mid.types.TypeOfStructure;
+import cz.martlin.jukebox.out.dataobj.Structure;
 import cz.martlin.jukebox.out.db.Database;
 import cz.martlinorg.testapp1.dataobj.Person;
-import cz.martlinorg.testapp1.model.TypeOfRecord;
 
 public class SomeDatabase implements Database {
 
@@ -19,44 +18,24 @@ public class SomeDatabase implements Database {
 		persons = new LinkedList<>(Arrays.asList(new Person("Lorem"), new Person("Ipsum")));
 	}
 
-	@Override
-	public <T extends Record> List<T> list(TypeOfRecord type) {
-		return (List<T>) persons;
+	public <S extends Structure> List<S> list(TypeOfStructure type) {
+		return (List<S>) persons;
 	}
 
-	@Override
-	public <T extends Record> T get(TypeOfRecord type, Object identifier) {
-		return (T) persons.get(0);
+	public <S extends Structure, I> S get(TypeOfStructure type, I identifier) {
+		return (S) persons.stream().filter((p) -> p.getIdentifier().equals(identifier)).findAny().get();
 	}
 
-	@Override
-	public <T extends Record> void create(Record record) {
-		persons.add((Person) record);
+	public <S extends Structure> void create(Structure structure) {
+		persons.add((Person) structure);
 	}
 
-	@Override
-	public <T extends Record> void update(Record record) {
+	public <S extends Structure> void update(Structure structure) {
 		//okay
 	}
 
-	@Override
-	public <T extends Record> void delete(Record record) {
-		persons.remove(record);
-	}
-
-	@Override
-	public <T extends Subrecord> void create(Record owner, Subrecord record) {
-		// TODO add, update, delete subrecord
-	}
-
-	@Override
-	public <T extends Subrecord> void update(Record owner, Subrecord record) {
-		// TODO add, update, delete subrecord
-	}
-
-	@Override
-	public <T extends Subrecord> void delete(Record owner, Subrecord record) {
-		// TODO add, update, delete subrecord
+	public <S extends Structure> void delete(Structure structure) {
+		persons.remove((Person) structure);
 	}
 
 }

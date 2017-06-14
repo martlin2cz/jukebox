@@ -1,5 +1,6 @@
 package cz.martlin.jukebox.rest;
 
+import cz.martlin.jukebox.mid.model.model.DataModel;
 import cz.martlin.jukebox.out.db.Database;
 import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.rest.exceptions.JukeboxException;
@@ -11,15 +12,15 @@ public class ProjectConfiguration {
 													// load
 													// or
 													// what
-	
+
 	private final String appName;
 	private final int revision;
 	private final DataModel model;
 	private final Database database;
-	private final GUIProvider<?> provider;
+	private final GUIProvider<?, ?> provider;
 
 	public ProjectConfiguration(String appName, int revision, DataModel model, Database database,
-			GUIProvider<?> provider) {
+			GUIProvider<?, ?> provider) {
 		super();
 		this.appName = appName;
 		this.revision = revision;
@@ -44,7 +45,7 @@ public class ProjectConfiguration {
 		return database;
 	}
 
-	public GUIProvider getGuiProvider() {
+	public GUIProvider<?, ?> getGuiProvider() {
 		return provider;
 	}
 
@@ -54,6 +55,7 @@ public class ProjectConfiguration {
 
 	public static ProjectConfiguration get() {
 		if (INSTANCE == null) {
+			//TODO not yet initialized exception
 			throw new JukeboxException("Not yet initialized ProjectConfiguration! Use static .set(...) method!", null) {
 			};
 		}

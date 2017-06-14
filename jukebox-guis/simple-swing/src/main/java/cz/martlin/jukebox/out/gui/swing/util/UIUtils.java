@@ -1,7 +1,5 @@
 package cz.martlin.jukebox.out.gui.swing.util;
 
-import cz.martlin.jukebox.mid.type.TypeOfRecord;
-
 public class UIUtils {
 
 	//TODO use config? somehow ...

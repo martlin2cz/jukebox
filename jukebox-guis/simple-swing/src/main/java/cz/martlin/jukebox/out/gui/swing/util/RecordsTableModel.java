@@ -6,27 +6,26 @@ import javax.swing.table.AbstractTableModel;
 
 import cz.martlin.jukebox.mid.model.attr.Attribute;
 import cz.martlin.jukebox.mid.model.misc.ModelUtils;
-import cz.martlin.jukebox.mid.model.model.RecordModel;
-import cz.martlin.jukebox.mid.type.TypeOfRecord;
-import cz.martlin.jukebox.out.dataobj.GeneralObject;
-import cz.martlin.jukebox.out.dataobj.Record;
+import cz.martlin.jukebox.mid.model.model.StructureModel;
+import cz.martlin.jukebox.mid.types.TypeOfStructure;
+import cz.martlin.jukebox.out.dataobj.Structure;
 import cz.martlin.jukebox.rest.ProjectConfiguration;
 
-public class RecordsTableModel<T extends GeneralObject> extends AbstractTableModel {
+public class RecordsTableModel<S extends Structure> extends AbstractTableModel {
 
 	private static final long serialVersionUID = -1175574099345489455L;
 
 	// private final RecordType type;
 	private final List<Attribute> attributes;
-	private final List<T> records;
+	private final List<S> records;
 
-	public RecordsTableModel(TypeOfRecord type, List<T> records) {
+	public RecordsTableModel(TypeOfStructure type, List<S> records) {
 		super();
 
 		//this.type = type;
 		this.records = records;
 
-		RecordModel model = ProjectConfiguration.get().getModel().getModelOf(type);
+		StructureModel<S> model = ProjectConfiguration.get().getModel().getModelOf(type);
 		attributes = model.getSecondaryAttributes();
 	}
 	/*
@@ -70,9 +69,9 @@ public class RecordsTableModel<T extends GeneralObject> extends AbstractTableMod
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		T record = records.get(rowIndex);
+		S record = records.get(rowIndex);
 		Attribute attr = attributes.get(columnIndex);
-		return ModelUtils.getAt((Record) record, attr);	//FIXME type hell
+		return ModelUtils.getAt(record, attr);	//FIXME type hell
 	}
 
 	@Override

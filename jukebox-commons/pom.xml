@@ -7,16 +7,8 @@
 		<version>0.1.0</version>
 	</parent>
 
-	<artifactId>types</artifactId>
+	<artifactId>jukebox-commons</artifactId>
 
-	<name>General types and values specification</name>
-	<description>General types and values specification</description>
-
-	<dependencies>
-		<dependency>
-			<groupId>cz.martlin</groupId>
-			<artifactId>jukebox-commons</artifactId>
-			<version>0.1.0</version>
-		</dependency>
-	</dependencies>
+	<name>Common classes for jukebox</name>
+	<description>Common classes for jukebox</description>
 </project>

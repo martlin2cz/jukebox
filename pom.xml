@@ -4,7 +4,7 @@
 
 	<groupId>cz.martlin</groupId>
 	<artifactId>jukebox</artifactId>
-	<version>${jukebox.project.version}</version>
+	<version>0.1.0</version>
 
 	<name>jukebox</name>
 	<description>Describe data model and let jukebox generate all Java sources instead of typing by hand</description>
@@ -13,14 +13,28 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<jukebox.project.version>0.0.1-SNAPSHOT</jukebox.project.version>
+<!-- 		<java.source.encoding>UTF-8</java.source.encoding> -->
+
+		<jukebox.commons.version>0.1.0</jukebox.commons.version>
+		<jukebox.types.version>0.1.0</jukebox.types.version>
+		<jukebox.domains.version>0.1.0</jukebox.domains.version>
+		<jukebox.dataobj.version>0.1.0</jukebox.dataobj.version>
+		<jukebox.model.version>0.1.0</jukebox.model.version>
+
 	</properties>
 	<modules>
-		<module>model</module>
-		<module>domains</module>
+	<!-- 
+		
+		
 		<module>gui</module>
-		<module>commons</module>
+		
+		 -->
+		<module>jukebox-commons</module>
 		<module>types</module>
+		<module>domains</module>
 		<module>dataobj</module>
+		<module>model</module>
+		<module>compiler</module>
+		
 	</modules>
 </project>

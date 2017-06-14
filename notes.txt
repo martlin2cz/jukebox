@@ -1,0 +1,11 @@
+What has to be specified to build:
+ - enums: radio buttons or dropdown lists?
+ - format of titles of frames/forms/pages
+ - generate GUI as children of base frames or [NOT?]
+ - format of output app (maven, ant, blank, eclipse, gradle, ...)
+ - gui code generated directly or created at runtime based on model
+ - models (completelly generated, computed at runtime based on classes and fields annotations (aka jack from jaxon))
+ - generated classes tidy (long sets of codes in separate methods or not; long classes divided or not or use nested classes)
+ - variables general ("Record record" or specific "Person person"); and/or type/varname
+ - special base interface for everything (creaton of components, form<->record methods, validation, ...) and "usable with" method?
+ - 

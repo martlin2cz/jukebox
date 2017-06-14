@@ -1,20 +1,21 @@
 package cz.martlin.jukebox.mid.model.attr;
 
-import cz.martlin.jukebox.mid.model.type.TypeOfAttribute;
 import cz.martlin.jukebox.mid.type.SimpleType;
 
 public class Attribute {
 	private final String name;
 	private final AttributeLevel level;
 	private final SimpleType type;
-	private final boolean isEmptyable;
+	private final boolean emptyable;
+	private final Object defaultValue;
 
-	public Attribute(String name, AttributeLevel level, SimpleType type, boolean isEmptyable) {
+	public Attribute(String name, AttributeLevel level, SimpleType type, boolean emptyable, Object defaultValue) {
 		super();
 		this.name = name;
 		this.level = level;
 		this.type = type;
-		this.isEmptyable = isEmptyable;
+		this.emptyable = emptyable;
+		this.defaultValue = defaultValue;
 	}
 
 	public String getName() {
@@ -25,11 +26,15 @@ public class Attribute {
 		return level;
 	}
 
-	public TypeOfAttribute getType() {
+	public SimpleType getType() {
 		return type;
 	}
-	
+
 	public boolean isEmptyable() {
-		return isEmptyable;
+		return emptyable;
+	}
+
+	public Object getDefaultValue() {
+		return defaultValue;
 	}
 }

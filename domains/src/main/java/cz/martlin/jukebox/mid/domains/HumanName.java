@@ -3,6 +3,7 @@ package cz.martlin.jukebox.mid.domains;
 import cz.martlin.jukebox.mid.domain.CommonDescriptor;
 import cz.martlin.jukebox.mid.domain.Domain;
 import cz.martlin.jukebox.mid.domain.DomainDescriptor;
+import cz.martlin.jukebox.mid.type.BaseType;
 import cz.martlin.jukebox.rest.Specifications;
 import cz.martlin.jukebox.rest.exceptions.NotDomainValueException;
 
@@ -20,12 +21,10 @@ public class HumanName implements Domain<HumanName> {
 		return name;
 	}
 
-
 	@Override
 	public DomainDescriptor<HumanName> getDescriptor() {
 		return DESCRIPTOR;
 	}
-	
 
 	public static class HumanNameDescriptor extends CommonDescriptor<HumanName> {
 

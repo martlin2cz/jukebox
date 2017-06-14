@@ -7,21 +7,15 @@
 		<version>${jukebox.project.version}</version>
 	</parent>
 
-	<artifactId>domains</artifactId>
+	<artifactId>types</artifactId>
 
-	<name>Implementation of jukebox domains</name>
-	<description>Implementation of jukebox domains</description>
+	<name>General types and values specification</name>
+	<description>General types and values specification</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>commons</artifactId>
-			<version>${jukebox.project.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>cz.martlin</groupId>
-			<artifactId>types</artifactId>
 			<version>${jukebox.project.version}</version>
 		</dependency>
 	</dependencies>

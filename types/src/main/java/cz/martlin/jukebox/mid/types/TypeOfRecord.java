@@ -1,8 +1,8 @@
 package cz.martlin.jukebox.mid.types;
 
-import cz.martlin.jukebox.mid.type.SimpleType;
+import cz.martlin.jukebox.mid.type.CompositeType;
 
-public class TypeOfRecord implements SimpleType {
+public class TypeOfRecord implements CompositeType {
 
 	@Override
 	public String getName() {

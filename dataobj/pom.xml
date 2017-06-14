@@ -7,11 +7,10 @@
 		<version>${jukebox.project.version}</version>
 	</parent>
 
-	<artifactId>model</artifactId>
+	<artifactId>dataobj</artifactId>
 
-	<name>Implementation of jukebox data model</name>
-	<description>Implementation of jukebox data model</description>
-
+	<name>Specification of data objects' structures</name>
+	<description>Specification of data objects' structures</description>
 
 	<dependencies>
 		<dependency>
@@ -29,12 +28,6 @@
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>domains</artifactId>
-			<version>${jukebox.project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>cz.martlin</groupId>
-			<artifactId>dataobj</artifactId>
 			<version>${jukebox.project.version}</version>
 		</dependency>
 	</dependencies>

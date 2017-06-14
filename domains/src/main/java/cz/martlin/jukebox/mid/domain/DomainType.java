@@ -1,7 +1,8 @@
 package cz.martlin.jukebox.mid.domain;
 
-public class DomainType<D extends Domain<D>> {
-	// TODO inherit some general base type or what
+import cz.martlin.jukebox.mid.type.SimpleType;
+
+public class DomainType<D extends Domain<D>> implements SimpleType {
 
 	private final Class<D> clazz;
 
@@ -12,5 +13,10 @@ public class DomainType<D extends Domain<D>> {
 
 	public Class<D> getClazz() {
 		return clazz;
+	}
+
+	@Override
+	public String getName() {
+		return clazz.getSimpleName();
 	}
 }

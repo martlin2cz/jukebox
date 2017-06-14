@@ -1,10 +1,10 @@
 package cz.martlin.jukebox.mid.domain;
 
-import cz.martlin.jukebox.mid.model.type.DomainTypeDescriptor;
-import cz.martlin.jukebox.mid.value.SimpleValue;
 
-public interface Domain extends SimpleValue {
+public interface Domain<D extends Domain<D>> /*extends SimpleValue */{
 
-	public <T extends Domain> DomainTypeDescriptor<T> getDescriptor();
+	//TODO extend SimpleValue from different module
+	
+	public DomainDescriptor<D> getDescriptor();
 
 }

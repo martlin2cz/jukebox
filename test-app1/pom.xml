@@ -8,9 +8,7 @@
 		<artifactId>jukebox</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>cz.martlin</groupId>
 	<artifactId>test-app1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>test-app1</name>
 	<url>http://maven.apache.org</url>
 	<properties>

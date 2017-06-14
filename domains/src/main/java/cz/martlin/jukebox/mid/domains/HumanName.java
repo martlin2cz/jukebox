@@ -1,14 +1,14 @@
 package cz.martlin.jukebox.mid.domains;
 
+import cz.martlin.jukebox.mid.domain.CommonDescriptor;
 import cz.martlin.jukebox.mid.domain.Domain;
-import cz.martlin.jukebox.mid.model.type.DomainTypeDescriptor;
-import cz.martlin.jukebox.mid.type.BaseType;
+import cz.martlin.jukebox.mid.domain.DomainDescriptor;
 import cz.martlin.jukebox.rest.Specifications;
 import cz.martlin.jukebox.rest.exceptions.NotDomainValueException;
 
-public class HumanName implements Domain {
+public class HumanName implements Domain<HumanName> {
 
-	public static final DomainTypeDescriptor<HumanName> DESCRIPTOR = new HumanNameDescriptor();
+	public static final DomainDescriptor<HumanName> DESCRIPTOR = new HumanNameDescriptor();
 	private final String name;
 
 	public HumanName(String name) {
@@ -20,22 +20,14 @@ public class HumanName implements Domain {
 		return name;
 	}
 
-	
 
 	@Override
-	public BaseType getBaseType() {
-		// TODO Auto-generated method stub
-		return null;
+	public DomainDescriptor<HumanName> getDescriptor() {
+		return DESCRIPTOR;
 	}
-
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T extends Domain> DomainTypeDescriptor<T> getDescriptor() {
-		return (DomainTypeDescriptor<T>) DESCRIPTOR;
-	}
 
-	public static class HumanNameDescriptor extends DomainTypeDescriptor<HumanName> {
+	public static class HumanNameDescriptor extends CommonDescriptor<HumanName> {
 
 		public HumanNameDescriptor() {
 			super(HumanName.class);

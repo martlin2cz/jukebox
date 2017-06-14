@@ -1,5 +1,5 @@
 package cz.martlin.jukebox.mid.domain;
-
+@Deprecated
 public abstract class CommonDomain implements Domain {
 	//
 	// @Override

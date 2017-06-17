@@ -1,13 +1,11 @@
 package cz.martlin.jukebox.mid.types;
 
-import cz.martlin.jukebox.mid.type.CompositeType;
+import cz.martlin.jukebox.mid.values.ValueOfInformation;
 
-public class TypeOfInformation implements CompositeType {
+public class TypeOfInformation<V extends ValueOfInformation<V>> extends TypeOfStructure<V> {
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+	public TypeOfInformation(Class<V> clazz) {
+		super(clazz);
 	}
 
 }

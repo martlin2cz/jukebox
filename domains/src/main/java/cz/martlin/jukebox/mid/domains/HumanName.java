@@ -1,15 +1,14 @@
 package cz.martlin.jukebox.mid.domains;
 
-import cz.martlin.jukebox.mid.domain.CommonDescriptor;
+import cz.martlin.jukebox.mid.converter.SimpleValueConverter;
 import cz.martlin.jukebox.mid.domain.Domain;
-import cz.martlin.jukebox.mid.domain.DomainDescriptor;
-import cz.martlin.jukebox.mid.type.BaseType;
+import cz.martlin.jukebox.mid.types.TypeOfDomain;
 import cz.martlin.jukebox.rest.Specifications;
-import cz.martlin.jukebox.rest.exceptions.NotDomainValueException;
+import cz.martlin.jukebox.rest.exceptions.InvalidSimpleValueException;
 
 public class HumanName implements Domain<HumanName> {
-
-	public static final DomainDescriptor<HumanName> DESCRIPTOR = new HumanNameDescriptor();
+	public static final TypeOfDomain<HumanName> TYPE = new TypeOfDomain<>(HumanName.class, new HumanNameConverter());
+	
 	private final String name;
 
 	public HumanName(String name) {
@@ -22,15 +21,11 @@ public class HumanName implements Domain<HumanName> {
 	}
 
 	@Override
-	public DomainDescriptor<HumanName> getDescriptor() {
-		return DESCRIPTOR;
+	public TypeOfDomain<HumanName> getDomainType() {
+		return TYPE;
 	}
 
-	public static class HumanNameDescriptor extends CommonDescriptor<HumanName> {
-
-		public HumanNameDescriptor() {
-			super(HumanName.class);
-		}
+	public static class HumanNameConverter implements SimpleValueConverter<HumanName> {
 
 		@Override
 		public String toHumanOutput(HumanName value) {
@@ -43,11 +38,11 @@ public class HumanName implements Domain<HumanName> {
 		}
 
 		@Override
-		public HumanName fromHumanOutput(String value) throws NotDomainValueException {
+		public HumanName fromHumanOutput(String value) throws InvalidSimpleValueException {
 			if (isValidHumanOutput(value)) {
 				return new HumanName(value);
 			} else {
-				throw new NotDomainValueException(value);
+				throw new InvalidSimpleValueException(value);
 			}
 		}
 
@@ -57,7 +52,7 @@ public class HumanName implements Domain<HumanName> {
 		}
 
 		@Override
-		public HumanName fromComputerOutput(String value) throws NotDomainValueException {
+		public HumanName fromComputerOutput(String value) throws InvalidSimpleValueException {
 			return fromHumanOutput(value);
 		}
 

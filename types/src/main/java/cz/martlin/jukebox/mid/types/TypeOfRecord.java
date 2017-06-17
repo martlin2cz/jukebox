@@ -1,22 +1,11 @@
 package cz.martlin.jukebox.mid.types;
 
-public class TypeOfRecord implements TypeOfStructure {
+import cz.martlin.jukebox.mid.values.ValueOfRecord;
 
-	private final Class<?> clazz;
+public class TypeOfRecord<V extends ValueOfRecord<V>> extends TypeOfStructure<V> {
 
-	public TypeOfRecord(Class<?> clazz) {
-		super();
-		this.clazz = clazz;
-	}
-
-	@Override
-	public Class<?> getClazz() {
-		return clazz;
-	}
-
-	@Override
-	public String getName() {
-		return clazz.getSimpleName();
+	public TypeOfRecord(Class<V> clazz) {
+		super(clazz);
 	}
 
 }

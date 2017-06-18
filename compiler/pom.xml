@@ -4,25 +4,25 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	</parent>
 
 	<artifactId>compiler</artifactId>
 
-	<name>Compiler of project descriptor file (to Java code)</name>
 	<description>Compiler of project descriptor file (to Java code)</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>cz.martlin</groupId>
-			<artifactId>commons</artifactId>
-			<version>0.1.0</version>
+			<artifactId>jukebox-commons</artifactId>
+			<version>0.1.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>model</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
+	<name>Jukebox project compiler</name>
 </project>

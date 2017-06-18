@@ -4,25 +4,25 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	</parent>
 
 	<artifactId>domains</artifactId>
 
-	<name>Implementation of jukebox domains</name>
 	<description>Implementation of jukebox domains</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>cz.martlin</groupId>
-			<artifactId>commons</artifactId>
-			<version>0.1.0</version>
+			<artifactId>jukebox-commons</artifactId>
+			<version>0.1.1</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>types</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
+	<name>Jukebox domains</name>
 </project>

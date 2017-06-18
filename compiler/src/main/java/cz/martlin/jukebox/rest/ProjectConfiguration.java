@@ -3,15 +3,11 @@ package cz.martlin.jukebox.rest;
 import cz.martlin.jukebox.mid.model.model.DataModel;
 import cz.martlin.jukebox.out.db.Database;
 import cz.martlin.jukebox.out.gui.provider.GUIProvider;
-import cz.martlin.jukebox.rest.exceptions.JukeboxException;
+import cz.martlin.jukebox.rest.exceptions.ConfigurationException;
 
 public class ProjectConfiguration {
-	private static ProjectConfiguration INSTANCE; // TODO
-													// singleton,
-													// but
-													// load
-													// or
-													// what
+	private static ProjectConfiguration INSTANCE;
+	// TODO singleton, but load or what
 
 	private final String appName;
 	private final int revision;
@@ -45,8 +41,14 @@ public class ProjectConfiguration {
 		return database;
 	}
 
-	public GUIProvider<?, ?> getGuiProvider() {
-		return provider;
+	public <C, F> GUIProvider<C, F> getGuiProvider() {
+		try {
+			@SuppressWarnings("unchecked")
+			GUIProvider<C, F> provider = (GUIProvider<C, F>) this.provider;
+			return provider;
+		} catch (ClassCastException e) {
+			throw new ConfigurationException("Invalid GUI provider", e);
+		}
 	}
 
 	public static void set(ProjectConfiguration value) {
@@ -55,9 +57,8 @@ public class ProjectConfiguration {
 
 	public static ProjectConfiguration get() {
 		if (INSTANCE == null) {
-			//TODO not yet initialized exception
-			throw new JukeboxException("Not yet initialized ProjectConfiguration! Use static .set(...) method!", null) {
-			};
+			Exception npe = new NullPointerException("Instance of ProjectConfiguration not set");
+			throw new ConfigurationException("Not yet initialized", npe);
 		}
 		return INSTANCE;
 	}

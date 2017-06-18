@@ -4,31 +4,31 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	</parent>
 
 	<artifactId>dataobj</artifactId>
 
-	<name>Specification of data objects' structures</name>
 	<description>Specification of data objects' structures</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>cz.martlin</groupId>
-			<artifactId>commons</artifactId>
-			<version>0.1.0</version>
+			<artifactId>jukebox-commons</artifactId>
+			<version>0.1.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>types</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>domains</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
+	<name>Jukebox data objects</name>
 </project>

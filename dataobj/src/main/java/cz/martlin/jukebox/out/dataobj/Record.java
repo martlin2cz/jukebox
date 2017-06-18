@@ -1,9 +1,10 @@
 package cz.martlin.jukebox.out.dataobj;
 
 import cz.martlin.jukebox.mid.types.TypeOfRecord;
+import cz.martlin.jukebox.mid.value.SimpleValue;
 import cz.martlin.jukebox.mid.values.ValueOfRecord;
 
-public abstract class Record<I, V extends Record<I, V>> //
+public abstract class Record<I extends SimpleValue, V extends Record<I, V>> //
 		extends BaseStructure<V> implements ValueOfRecord<V> {
 
 	public Record(TypeOfRecord<V> type) {

@@ -19,7 +19,7 @@ import cz.martlin.jukebox.mid.types.TypeOfRecord;
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.types.TypeOfSubrecord;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
-import cz.martlin.jukebox.rest.exceptions.UnknownRecordTypeException;
+import cz.martlin.jukebox.rest.exceptions.UnknownTypeException;
 import cz.martlinorg.testapp1.dataobj.Person;
 
 public class DumpedDataModel implements DataModel {
@@ -48,7 +48,7 @@ public class DumpedDataModel implements DataModel {
 			return (StructureModel<S>) getModelOfInformation(information);
 		}
 
-		throw new UnknownRecordTypeException(type);
+		throw new UnknownTypeException(type);
 
 	}
 
@@ -60,19 +60,20 @@ public class DumpedDataModel implements DataModel {
 			return MODEL_OF_PERSON;
 		}
 
-		throw new UnknownRecordTypeException(type);
+		throw new UnknownTypeException(type);
 	}
 
 	private SubrecordModel<?> getModelOfSubrecord(TypeOfSubrecord<?> type) {
-		throw new UnknownRecordTypeException(type);
+		throw new UnknownTypeException(type);
 	}
 
 	private InformationModel<?> getModelOfInformation(TypeOfInformation<?> type) {
-		throw new UnknownRecordTypeException(type);
+		throw new UnknownTypeException(type);
 	}
 
 	private static RecordModel<Identificator, Person> createModelOfPerson() {
 		String name = "Person";
+		TypeOfRecord<Person> type = Person.TYPE;
 		Attribute<Identificator> loginAttr = new Attribute<>("login", AttributeLevel.IDENTIFIER, Identificator.TYPE,
 				false, new Identificator("---"));
 		Attribute<HumanName> nameAttr = new Attribute<>("name", AttributeLevel.PRIMARY, HumanName.TYPE, false,
@@ -86,7 +87,8 @@ public class DumpedDataModel implements DataModel {
 		List<Attribute<?>> secondaryAttributes = new ArrayList<>();
 		List<Attribute<?>> ternaryAttributes = Arrays.asList(childrenAttr);
 
-		return new RecordModel<>(name, identifierAttribute, primaryAttributes, secondaryAttributes, ternaryAttributes);
+		return new RecordModel<>(name, type, identifierAttribute, primaryAttributes, secondaryAttributes,
+				ternaryAttributes);
 	}
 
 }

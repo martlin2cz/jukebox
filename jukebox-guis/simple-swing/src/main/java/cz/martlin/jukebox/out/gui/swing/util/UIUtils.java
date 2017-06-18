@@ -1,11 +1,13 @@
 package cz.martlin.jukebox.out.gui.swing.util;
 
+import cz.martlin.jukebox.mid.types.TypeOfStructure;
+
 public class UIUtils {
 
 	//TODO use config? somehow ...
 	
-	public static String getFrameTitle(Object type) {
-		return type.getClass().getName() + " | " ;
+	public static String getFrameTitle(TypeOfStructure<?> type) {
+		return type.getName() + " | " ;
 	}
 
 	public static String getMainFrameTitle() {

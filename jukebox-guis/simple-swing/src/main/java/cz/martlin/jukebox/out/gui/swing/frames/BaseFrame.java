@@ -26,9 +26,9 @@ public abstract class BaseFrame extends JDialog {
 
 	protected abstract void initializeContent();
 
-	public void fireDataChanged(BaseFrame sender) {
+	public void fireDataChanged(BaseFrame senderOrNot) {
 		openedFrames.stream() //
-				.filter((f) -> !f.equals(sender)) //
+				.filter((f) -> !f.equals(senderOrNot)) //
 				.forEach((f) -> f.updateData()); //
 
 	}

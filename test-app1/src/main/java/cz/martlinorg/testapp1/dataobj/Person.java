@@ -7,7 +7,7 @@ import cz.martlin.jukebox.mid.types.TypeOfRecord;
 import cz.martlin.jukebox.out.dataobj.Record;
 
 public class Person extends Record<Identificator, Person> {
-	private static final TypeOfRecord<Person> TYPE = new TypeOfRecord<>(Person.class);
+	public static final TypeOfRecord<Person> TYPE = new TypeOfRecord<>(Person.class);
 
 	private Identificator login;
 	private HumanName name;

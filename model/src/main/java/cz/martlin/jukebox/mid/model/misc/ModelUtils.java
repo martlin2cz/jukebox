@@ -10,7 +10,7 @@ import java.util.Map;
 import cz.martlin.jukebox.mid.model.attr.Attribute;
 import cz.martlin.jukebox.mid.value.SimpleValue;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
-import cz.martlin.jukebox.rest.exceptions.UnknownRecordTypeException;
+import cz.martlin.jukebox.rest.exceptions.UnknownTypeException;
 
 public class ModelUtils {
 
@@ -28,7 +28,7 @@ public class ModelUtils {
 			 
 			return (V) getter.invoke(record);
 		} catch (Exception e) {
-			throw new UnknownRecordTypeException(attr, e); // TODO unknown
+			throw new UnknownTypeException(attr, e); // TODO unknown
 														// atttribute exception
 														// ?
 		}

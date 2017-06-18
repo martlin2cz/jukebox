@@ -15,7 +15,7 @@ import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
 import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
-import cz.martlin.jukebox.rest.exceptions.UnknownRecordTypeException;
+import cz.martlin.jukebox.rest.exceptions.UnknownTypeException;
 import cz.martlinorg.testapp1.dataobj.Person;
 import cz.martlinorg.testapp1.gui.swing.frames.detail.JPersonFrame;
 import cz.martlinorg.testapp1.gui.swing.frames.tables.JPersonsFrame;
@@ -34,7 +34,7 @@ public class SwingProvider implements GUIProvider<JComponent, BaseFrame> {
 			return new JSpinner();
 		}
 
-		throw new UnknownRecordTypeException(type);
+		throw new UnknownTypeException(type);
 	}
 
 	// TODO value of component is ALLWAYS String? In spinner or color picker as
@@ -51,7 +51,7 @@ public class SwingProvider implements GUIProvider<JComponent, BaseFrame> {
 			return ((JSpinner) component).getValue().toString();
 		}
 
-		throw new UnknownRecordTypeException(component);
+		throw new UnknownTypeException(component);
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class SwingProvider implements GUIProvider<JComponent, BaseFrame> {
 													// converter?
 		}
 
-		throw new UnknownRecordTypeException(component);
+		throw new UnknownTypeException(component);
 	}
 
 	@SuppressWarnings("unchecked")

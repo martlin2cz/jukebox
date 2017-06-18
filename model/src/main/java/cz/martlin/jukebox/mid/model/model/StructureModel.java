@@ -5,11 +5,14 @@ import java.util.Map;
 
 import cz.martlin.jukebox.mid.model.attr.Attribute;
 import cz.martlin.jukebox.mid.model.misc.ModelUtils;
+import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
+import cz.martlin.jukebox.rest.exceptions.UnknownTypeException;
 
 public abstract class StructureModel<S extends ValueOfStructure<S>> {
 
 	private final String name;
+	private final TypeOfStructure<S> type;
 
 	// TODO has ordering? is ordered? order attributes?
 	private final List<Attribute<?>> onlyPrimaryAttributes;
@@ -18,10 +21,11 @@ public abstract class StructureModel<S extends ValueOfStructure<S>> {
 	private final Map<String, Attribute<?>> allAttributes;
 	private String description; // TODO make it final
 
-	public StructureModel(String name, List<Attribute<?>> onlyPrimaryAttributes, List<Attribute<?>> onlySecondaryAttributes,
+	public StructureModel(String name, TypeOfStructure<S> type, List<Attribute<?>> onlyPrimaryAttributes, List<Attribute<?>> onlySecondaryAttributes,
 			List<Attribute<?>> onlyTernaryAttributes) {
 		super();
 		this.name = name;
+		this.type = type;
 		this.onlyPrimaryAttributes = onlyPrimaryAttributes;
 		this.onlySecondaryAttributes = onlySecondaryAttributes;
 		this.onlyTernaryAttributes = onlyTernaryAttributes;
@@ -54,7 +58,11 @@ public abstract class StructureModel<S extends ValueOfStructure<S>> {
 	}
 
 	public S getNewDataobjInstance() {
-		return null;
+		try {
+			return type.getTypeClazz().newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			throw new UnknownTypeException(type);
+		}
 	}
 
 }

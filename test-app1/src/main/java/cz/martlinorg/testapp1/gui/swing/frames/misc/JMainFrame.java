@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import cz.martlin.jukebox.mid.types.TypeOfRecord;
 import cz.martlin.jukebox.out.db.Database;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
-import cz.martlin.jukebox.out.gui.swing.frames.BaseObjectsTableFrame;
+import cz.martlin.jukebox.out.gui.swing.frames.BaseStructuresTableFrame;
 import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
 import cz.martlin.jukebox.rest.ProjectConfiguration;
 import cz.martlinorg.testapp1.dataobj.Person;
@@ -29,8 +29,8 @@ public class JMainFrame extends BaseFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			List<Person> persons = database.list(new TypeOfRecord(Person.class));
-			BaseObjectsTableFrame<Person> frame = new JPersonsFrame(owner, persons);
+			List<Person> persons = database.list(new TypeOfRecord<>(Person.class));
+			BaseStructuresTableFrame<Person> frame = new JPersonsFrame(owner, persons);
 			frame.openFrame();
 		}
 
@@ -45,8 +45,7 @@ public class JMainFrame extends BaseFrame {
 		initialize();
 	}
 
-	
-@Override
+	@Override
 	protected void initializeContent() {
 		String text = UIUtils.headingOnMainFrame();
 		JLabel label = new JLabel(text);
@@ -66,11 +65,10 @@ public class JMainFrame extends BaseFrame {
 		return pane;
 	}
 
-
 	@Override
 	protected void doUpdateData() {
 		// TODO update data in main frame
-		
+
 	}
 
 }

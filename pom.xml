@@ -4,7 +4,7 @@
 
 	<groupId>cz.martlin</groupId>
 	<artifactId>jukebox</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 
 	<name>jukebox</name>
 	<description>Describe data model and let jukebox generate all Java sources instead of typing by hand</description>

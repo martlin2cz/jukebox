@@ -13,18 +13,18 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
-import cz.martlin.jukebox.out.dataobj.Structure;
+import cz.martlin.jukebox.mid.values.ValueOfStructure;
 import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.out.gui.swing.util.RecordsTableModel;
 import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
 import cz.martlin.jukebox.rest.ProjectConfiguration;
 
 
-public class BaseObjectsTableFrame<S extends Structure> extends BaseFrame {
+public class BaseObjectsTableFrame<S extends ValueOfStructure<S>> extends BaseFrame {
 
 	private static final long serialVersionUID = -5502445028485072857L;
 
-	private final TypeOfStructure type;
+	private final TypeOfStructure<S> type;
 	private final GUIProvider<JComponent, BaseFrame> provider;
 	
 	protected final List<S> records;
@@ -32,11 +32,11 @@ public class BaseObjectsTableFrame<S extends Structure> extends BaseFrame {
 	private AbstractTableModel model;
 	private JLabel lblCount;
 	
-	public BaseObjectsTableFrame(BaseFrame owner, TypeOfStructure type, List<S> records) {
+	public BaseObjectsTableFrame(BaseFrame owner, TypeOfStructure<S> type, List<S> records) {
 		super(owner, UIUtils.getFrameTitle(type));
 
 		this.type = type;
-		this.provider = (GUIProvider<JComponent, BaseFrame>) ProjectConfiguration.get().getGuiProvider();
+		this.provider =  ProjectConfiguration.get().getGuiProvider();
 		
 		this.records = records;
 

@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	</parent>
 
 	<artifactId>jukebox-commons</artifactId>
 
-	<name>Common classes for jukebox</name>
+	<name>Jukebox commons</name>
 	<description>Common classes for jukebox</description>
 </project>

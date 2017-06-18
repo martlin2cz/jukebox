@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	</parent>
 
 	<artifactId>test-app1</artifactId>
@@ -27,13 +27,13 @@
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>compiler</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>simple-swing</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 
 

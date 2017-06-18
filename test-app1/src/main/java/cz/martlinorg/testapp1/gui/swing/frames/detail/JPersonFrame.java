@@ -17,7 +17,7 @@ public class JPersonFrame extends BaseRecordFrame<Person> {
 
 	JTextField txtName;
 
-	public JPersonFrame(BaseFrame owner, TypeOfStructure type, Person person) {
+	public JPersonFrame(BaseFrame owner, TypeOfStructure<Person> type, Person person) {
 		super(owner, type, person);
 
 		initialize();
@@ -38,25 +38,27 @@ public class JPersonFrame extends BaseRecordFrame<Person> {
 
 	@Override
 	protected void structureToForm(Person person) {
-		this.txtName.setText(person.getName());
+		this.txtName.setText(person.getName().getDomainType().getConverter().toHumanOutput(person.getName()));
 	}
 
 	@Override
 	protected void defaultsToForm() {
-		this.txtName.setText("(Specify name here)");	//TODO use particular attribute's default value
+		this.txtName.setText("(Specify name here)"); 
+		// TODO use particular attribute's default value
 	}
 
 	@Override
 	protected void formToStructure(Person person) {
-		person.setName(this.txtName.getText());
+		person.setName(person.getName().getDomainType().getConverter().fromHumanOutput(this.txtName.getText()));
 	}
 
 	@Override
 	protected ValidationReport runValidation() {
 		ValidationReport report = new ValidationReport();
 
-		Attribute attrName = model.getAttribute("name");
+		Attribute<?> attrName = model.getAttribute("name");
 		if (!isValid(attrName, this.txtName)) {
+			
 			report.add(attrName, this.txtName.getText(), "Required field");
 		}
 

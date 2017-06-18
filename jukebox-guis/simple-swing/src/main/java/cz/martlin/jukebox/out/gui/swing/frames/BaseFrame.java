@@ -8,14 +8,12 @@ import javax.swing.JDialog;
 public abstract class BaseFrame extends JDialog {
 
 	private static final long serialVersionUID = -6777762508795951799L;
+	
 	private static final Set<BaseFrame> openedFrames = new HashSet<>();
 
-	private final BaseFrame owner;
 
 	public BaseFrame(BaseFrame owner, String title) {
 		super(owner, title);
-
-		this.owner = owner;
 	}
 
 	protected void initialize() {

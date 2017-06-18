@@ -4,19 +4,19 @@
 	<parent>
 		<groupId>cz.martlin</groupId>
 		<artifactId>jukebox</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	</parent>
 
 	<artifactId>types</artifactId>
 
-	<name>General types and values specification</name>
+	<name>Jukebox types</name>
 	<description>General types and values specification</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>jukebox-commons</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
 </project>

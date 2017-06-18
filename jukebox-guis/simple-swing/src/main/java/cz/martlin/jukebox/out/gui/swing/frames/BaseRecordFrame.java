@@ -10,18 +10,19 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import cz.martlin.jukebox.mid.domain.DomainConverter;
+import cz.martlin.jukebox.mid.converter.SimpleValueConverter;
 import cz.martlin.jukebox.mid.model.attr.Attribute;
 import cz.martlin.jukebox.mid.model.model.StructureModel;
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
-import cz.martlin.jukebox.out.dataobj.Structure;
+import cz.martlin.jukebox.mid.value.SimpleValue;
+import cz.martlin.jukebox.mid.values.ValueOfStructure;
 import cz.martlin.jukebox.out.db.Database;
 import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
 import cz.martlin.jukebox.out.gui.swing.validation.ValidationReport;
 import cz.martlin.jukebox.rest.ProjectConfiguration;
 
-public abstract class BaseRecordFrame<S extends Structure> extends BaseFrame {
+public abstract class BaseRecordFrame<S extends ValueOfStructure<S>> extends BaseFrame {
 
 	private static final long serialVersionUID = -5070439411869982612L;
 
@@ -30,13 +31,13 @@ public abstract class BaseRecordFrame<S extends Structure> extends BaseFrame {
 	private final GUIProvider<JComponent, BaseFrame> provider;
 	protected final S record;
 
-	public BaseRecordFrame(BaseFrame owner, TypeOfStructure type, S record) {
+	public BaseRecordFrame(BaseFrame owner, TypeOfStructure<S> type, S record) {
 		super(owner, UIUtils.getFrameTitle(type));
 
 		ProjectConfiguration config = ProjectConfiguration.get();
 		this.database = config.getDatabase();
 		this.model = config.getModel().getModelOf(type);
-		this.provider = (GUIProvider<JComponent, BaseFrame>) config.getGuiProvider();
+		this.provider = config.getGuiProvider();
 
 		this.record = record;
 	}
@@ -124,10 +125,9 @@ public abstract class BaseRecordFrame<S extends Structure> extends BaseFrame {
 		JOptionPane.showMessageDialog(this, "Errors: " + report.getFailures().size());
 	}
 
-	protected boolean isValid(Attribute attribute, JComponent component) {
+	protected <V extends SimpleValue>boolean isValid(Attribute<V> attribute, JComponent component) {
 		String value = provider.getValueOf(component);
-		DomainConverter<?> converter = null; // RecordLink has also have some
-												// Descriptor, ya?!
+		SimpleValueConverter<V> converter = attribute.getType().getConverter();
 		return converter.isValidHumanOutput(value);
 	}
 

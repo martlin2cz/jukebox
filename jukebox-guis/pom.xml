@@ -3,16 +3,16 @@
   <parent>
     <groupId>cz.martlin</groupId>
     <artifactId>jukebox</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
   </parent>
   
   <artifactId>jukebox-guis</artifactId>
   <packaging>pom</packaging>
   
-  <name>Set of gui implementations for jukebox generated apps</name>
   <description>Set of gui implementations for jukebox generated apps</description>
   
   <modules>
   	<module>simple-swing</module>
   </modules>
+  <name>Jukebox GUIs</name>
 </project>

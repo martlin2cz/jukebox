@@ -1,25 +1,26 @@
 package cz.martlin.jukebox.out.gui.swing.validation;
 
 import cz.martlin.jukebox.mid.model.attr.Attribute;
+import cz.martlin.jukebox.mid.value.SimpleValue;
 
-public class ValidationFailure {
+public class ValidationFailure<V extends SimpleValue> {
 
-	private final Attribute attribute;
-	private final Object value;
+	private final Attribute<V> attribute;
+	private final String value;
 	private final String description;
 
-	public ValidationFailure(Attribute attribute, Object value, String description) {
+	public ValidationFailure(Attribute<V> attribute, String value, String description) {
 		super();
 		this.attribute = attribute;
 		this.value = value;
 		this.description = description;
 	}
 
-	public Attribute getAttribute() {
+	public Attribute<V> getAttribute() {
 		return attribute;
 	}
 
-	public Object getValue() {
+	public String getValue() {
 		return value;
 	}
 

@@ -3,11 +3,11 @@ package cz.martlin.jukebox.mid.domains;
 import cz.martlin.jukebox.mid.converter.SimpleValueConverter;
 import cz.martlin.jukebox.mid.domain.Domain;
 import cz.martlin.jukebox.mid.types.TypeOfDomain;
-import cz.martlin.jukebox.rest.Specifications;
+import cz.martlin.jukebox.rest.GlobalSpecifications;
 import cz.martlin.jukebox.rest.exceptions.InvalidSimpleValueException;
 
 public class Identificator implements Domain<Identificator> {
-
+	private static final long serialVersionUID = -4317981800437200232L;
 	public static final TypeOfDomain<Identificator> TYPE = //
 			new TypeOfDomain<>(Identificator.class, new IdentificatorConverter());
 
@@ -45,7 +45,7 @@ public class Identificator implements Domain<Identificator> {
 
 		@Override
 		public boolean isValidHumanOutput(String value) {
-			return value.matches(Specifications.IDENTIFICATOR_REGEX);
+			return value.matches(GlobalSpecifications.IDENTIFICATOR_REGEX);
 		}
 
 		@Override

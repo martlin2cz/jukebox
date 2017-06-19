@@ -3,12 +3,13 @@ package cz.martlin.jukebox.mid.domains;
 import cz.martlin.jukebox.mid.converter.SimpleValueConverter;
 import cz.martlin.jukebox.mid.domain.Domain;
 import cz.martlin.jukebox.mid.types.TypeOfDomain;
-import cz.martlin.jukebox.rest.Specifications;
+import cz.martlin.jukebox.rest.GlobalSpecifications;
 import cz.martlin.jukebox.rest.exceptions.InvalidSimpleValueException;
 
-public class HumanName implements Domain<HumanName> {
+public class HumanName implements Domain<HumanName>, Comparable<HumanName> {
+	private static final long serialVersionUID = 1428471049489308846L;
 	public static final TypeOfDomain<HumanName> TYPE = new TypeOfDomain<>(HumanName.class, new HumanNameConverter());
-	
+
 	private final String name;
 
 	public HumanName(String name) {
@@ -25,6 +26,11 @@ public class HumanName implements Domain<HumanName> {
 		return TYPE;
 	}
 
+	@Override
+	public int compareTo(HumanName o) {
+		return this.name.compareTo(o.name);
+	}
+
 	public static class HumanNameConverter implements SimpleValueConverter<HumanName> {
 
 		@Override
@@ -34,7 +40,7 @@ public class HumanName implements Domain<HumanName> {
 
 		@Override
 		public boolean isValidHumanOutput(String value) {
-			return value.matches(Specifications.HUMAN_NAME_REGEX);
+			return value.matches(GlobalSpecifications.HUMAN_NAME_REGEX);
 		}
 
 		@Override

@@ -35,8 +35,7 @@ public class StructuresTableRenderer implements TableCellRenderer {
 	}
 
 	private <V extends SimpleValue> String convert(V sv) {
-		@SuppressWarnings("unchecked")
-		SimpleType<V> simpleType = (SimpleType<V>) sv.getBaseType();
+		SimpleType<V> simpleType = sv.getSimpleType();
 		SimpleValueConverter<V> converter = simpleType.getConverter();
 		return converter.toHumanOutput(sv);
 	}

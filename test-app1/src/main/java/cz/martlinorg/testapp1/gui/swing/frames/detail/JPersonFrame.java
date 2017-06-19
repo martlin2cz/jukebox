@@ -17,6 +17,7 @@ import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseStructureFrame;
 import cz.martlin.jukebox.out.gui.swing.validation.ValidationReport;
 import cz.martlinorg.testapp1.dataobj.Person;
+import cz.martlinorg.testapp1.model.AppSpecifications;
 
 public class JPersonFrame extends BaseStructureFrame<Person> {
 
@@ -51,14 +52,7 @@ public class JPersonFrame extends BaseStructureFrame<Person> {
 		JLabel lblToChildren = new JLabel("Children");
 		pane.add(lblToChildren);
 
-		SpinnerModel spinChildrenModel = new SpinnerNumberModel(0, 0, 100, 1); // TODO
-																				// max
-																				// value
-																				// of
-																				// attr,
-																				// where
-																				// to
-																				// infer?
+		SpinnerModel spinChildrenModel = new SpinnerNumberModel(0, 0, AppSpecifications.MAX_PERSON_CHILD_VALUE, 1);
 		spinChildren = new JSpinner(spinChildrenModel);
 		pane.add(spinChildren);
 

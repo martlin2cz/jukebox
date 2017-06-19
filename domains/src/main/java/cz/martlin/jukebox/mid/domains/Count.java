@@ -3,11 +3,11 @@ package cz.martlin.jukebox.mid.domains;
 import cz.martlin.jukebox.mid.converter.SimpleValueConverter;
 import cz.martlin.jukebox.mid.domain.Domain;
 import cz.martlin.jukebox.mid.types.TypeOfDomain;
-import cz.martlin.jukebox.rest.Specifications;
+import cz.martlin.jukebox.rest.GlobalSpecifications;
 import cz.martlin.jukebox.rest.exceptions.InvalidSimpleValueException;
 
-public class Count implements Domain<Count> {
-
+public class Count implements Domain<Count>, Comparable<Count> {
+	private static final long serialVersionUID = 8550436952938598517L;
 	public static final TypeOfDomain<Count> TYPE = //
 			new TypeOfDomain<>(Count.class, new CountConverter());
 
@@ -25,6 +25,11 @@ public class Count implements Domain<Count> {
 	@Override
 	public TypeOfDomain<Count> getDomainType() {
 		return TYPE;
+	}
+
+	@Override
+	public int compareTo(Count o) {
+		return this.value - o.value;
 	}
 
 	public static class CountConverter implements SimpleValueConverter<Count> {
@@ -49,7 +54,7 @@ public class Count implements Domain<Count> {
 
 		@Override
 		public boolean isValidHumanOutput(String value) {
-			return value.matches(Specifications.COUNT_REGEX);
+			return value.matches(GlobalSpecifications.COUNT_REGEX);
 		}
 
 		@Override

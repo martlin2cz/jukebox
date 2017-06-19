@@ -5,6 +5,8 @@ import cz.martlin.jukebox.mid.domains.HumanName;
 import cz.martlin.jukebox.mid.domains.Identificator;
 import cz.martlin.jukebox.mid.types.TypeOfRecord;
 import cz.martlin.jukebox.out.dataobj.Record;
+import cz.martlin.jukebox.out.dataobj.misc.Validation;
+import cz.martlinorg.testapp1.model.AppSpecifications;
 
 public class Person extends Record<Identificator, Person> {
 	public static final TypeOfRecord<Person> TYPE = new TypeOfRecord<>(Person.class);
@@ -30,6 +32,7 @@ public class Person extends Record<Identificator, Person> {
 	}
 
 	public void setLogin(Identificator login) {
+		Validation.checkNotEmpty("login", login);
 		this.login = login;
 	}
 
@@ -38,6 +41,7 @@ public class Person extends Record<Identificator, Person> {
 	}
 
 	public void setName(HumanName name) {
+		Validation.checkNotEmpty("name", name);
 		this.name = name;
 	}
 
@@ -46,6 +50,8 @@ public class Person extends Record<Identificator, Person> {
 	}
 
 	public void setChildren(Count children) {
+		Validation.checkNotEmpty("children", children);
+		Validation.checkMaximal("children", children, AppSpecifications.MAX_PERSON_CHILD);
 		this.children = children;
 	}
 

@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>compiler</artifactId>
-
+	<name>Jukebox project compiler</name>
 	<description>Compiler of project descriptor file (to Java code)</description>
 
 	<dependencies>
@@ -23,6 +23,18 @@
 			<artifactId>model</artifactId>
 			<version>0.1.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>cz.martlin</groupId>
+			<artifactId>guis-base</artifactId>
+			<version>0.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cz.martlin</groupId>
+			<artifactId>database-base</artifactId>
+			<version>0.1.1</version>
+		</dependency>
 	</dependencies>
-	<name>Jukebox project compiler</name>
+
 </project>

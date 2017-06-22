@@ -25,7 +25,7 @@ public class ModelUtils {
 			String attrName = attr.getName();
 			String getterName = "get" + attrName.substring(0, 1).toUpperCase() + attrName.substring(1);
 			Method getter = record.getClass().getDeclaredMethod(getterName);
-			 
+
 			return (V) getter.invoke(record);
 		} catch (Exception e) {
 			throw new UnknownTypeException(attr, e); // TODO unknown

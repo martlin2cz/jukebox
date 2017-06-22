@@ -5,7 +5,7 @@ import cz.martlin.jukebox.mid.value.CompositeValue;
 
 public abstract class TypeOfStructure<V extends CompositeValue> //
 		extends CommonType<V> implements CompositeType {
-	
+
 	public TypeOfStructure(Class<V> clazz) {
 		super(clazz);
 	}

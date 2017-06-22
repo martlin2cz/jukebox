@@ -1,5 +1,6 @@
 package cz.martlin.jukebox.out.gui.swing.util;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -10,7 +11,7 @@ import cz.martlin.jukebox.mid.model.model.StructureModel;
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
-import cz.martlin.jukebox.rest.ProjectConfiguration;
+import cz.martlin.jukebox.out.rest.ProjectConfiguration;
 import cz.martlin.jukebox.rest.exceptions.UnknownTypeException;
 
 public class RecordsTableModel<S extends ValueOfStructure<S>> extends AbstractTableModel {
@@ -20,16 +21,21 @@ public class RecordsTableModel<S extends ValueOfStructure<S>> extends AbstractTa
 	// private final RecordType type;
 	private final BaseFrame owner;
 	private final List<Attribute<?>> attributes;
-	private final List<S> records;
 
-	public RecordsTableModel(BaseFrame owner, TypeOfStructure<S> type, List<S> records) {
+	private List<S> records;
+
+	public RecordsTableModel(BaseFrame owner, TypeOfStructure<S> type) {
 		super();
 		this.owner = owner;
 		// this.type = type;
-		this.records = records;
+		this.records = Collections.emptyList();
 
 		StructureModel<S> model = ProjectConfiguration.get().getModel().getModelOf(type);
 		attributes = model.getSecondaryAttributes();
+	}
+
+	public void setRecords(List<S> records) {
+		this.records = records;
 	}
 
 	@Override

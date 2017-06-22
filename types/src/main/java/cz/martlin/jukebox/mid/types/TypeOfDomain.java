@@ -28,4 +28,14 @@ public class TypeOfDomain<V extends ValueOfDomain<V>> //
 		return clazz.getSimpleName();
 	}
 
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
 }

@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cz.martlin</groupId>
+		<artifactId>jukebox-databases</artifactId>
+		<version>0.1.1</version>
+	</parent>
+
+	<artifactId>database-base</artifactId>
+	<name>Jukebox databases base</name>
+	<description>Module with base classes of all jukebox databases</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>cz.martlin</groupId>
+			<artifactId>jukebox-commons</artifactId>
+			<version>0.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cz.martlin</groupId>
+			<artifactId>model</artifactId>
+			<version>0.1.1</version>
+		</dependency>
+	</dependencies>
+</project>

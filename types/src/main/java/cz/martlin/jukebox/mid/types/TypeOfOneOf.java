@@ -42,4 +42,29 @@ public class TypeOfOneOf<V extends ValueOfOneOf<V>> //
 				.collect(Collectors.joining(", "));
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((allPossibleValues == null) ? 0 : allPossibleValues.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TypeOfOneOf<?> other = (TypeOfOneOf<?>) obj;
+		if (allPossibleValues == null) {
+			if (other.allPossibleValues != null)
+				return false;
+		} else if (!allPossibleValues.equals(other.allPossibleValues))
+			return false;
+		return true;
+	}
+
 }

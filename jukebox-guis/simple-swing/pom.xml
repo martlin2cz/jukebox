@@ -1,17 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>cz.martlin</groupId>
-    <artifactId>jukebox-guis</artifactId>
-    <version>0.1.1</version>
-  </parent>
-  
-  <artifactId>simple-swing</artifactId>
-  
-  <name>Jukebox simple swing GUI impl</name>
-  <description>Simple swing gui implementation</description>
-  
-  	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cz.martlin</groupId>
+		<artifactId>jukebox-guis</artifactId>
+		<version>0.1.1</version>
+	</parent>
+
+	<artifactId>simple-swing</artifactId>
+
+	<name>Jukebox simple swing GUI impl</name>
+	<description>Simple swing gui implementation</description>
+
+	<dependencies>
 		<dependency>
 			<groupId>cz.martlin</groupId>
 			<artifactId>jukebox-commons</artifactId>
@@ -20,14 +21,16 @@
 
 		<dependency>
 			<groupId>cz.martlin</groupId>
-			<artifactId>model</artifactId>
+			<artifactId>guis-base</artifactId>
 			<version>0.1.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>cz.martlin</groupId>
-			<artifactId>compiler</artifactId>
+			<artifactId>jukebox-app</artifactId>
 			<version>0.1.1</version>
 		</dependency>
+
+
 	</dependencies>
 </project>

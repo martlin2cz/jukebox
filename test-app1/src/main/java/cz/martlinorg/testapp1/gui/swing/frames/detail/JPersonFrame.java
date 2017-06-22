@@ -68,8 +68,8 @@ public class JPersonFrame extends BaseStructureFrame<Person> {
 
 	@Override
 	protected void defaultsToForm() {
-		this.lblLogin.setText("login");
-		this.txtName.setText("(Specify name here)");
+		this.lblLogin.setText("login" + System.currentTimeMillis());
+		this.txtName.setText("Specify name here");
 		this.spinChildren.setValue(0);
 
 		// TODO use particular attribute's default value

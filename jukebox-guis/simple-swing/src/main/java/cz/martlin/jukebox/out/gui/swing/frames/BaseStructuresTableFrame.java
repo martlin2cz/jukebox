@@ -12,31 +12,33 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
+import cz.martlin.jukebox.out.db.Database;
+import cz.martlin.jukebox.out.gui.swing.impl.UIUtils;
 import cz.martlin.jukebox.out.gui.swing.util.Actions;
 import cz.martlin.jukebox.out.gui.swing.util.RecordsTableModel;
 import cz.martlin.jukebox.out.gui.swing.util.StructuresTableRenderer;
-import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
+import cz.martlin.jukebox.out.rest.ProjectConfiguration;
 
 public class BaseStructuresTableFrame<S extends ValueOfStructure<S>> extends BaseFrame {
 
 	private static final long serialVersionUID = -5502445028485072857L;
 
 	private final TypeOfStructure<S> type;
+	private final Database database;
 
-	protected final List<S> records;
+	// protected final ;
 
-	private AbstractTableModel model;
+	private RecordsTableModel<S> model;
 	private JLabel lblCount;
 
-	public BaseStructuresTableFrame(BaseFrame owner, TypeOfStructure<S> type, List<S> records) {
+	public BaseStructuresTableFrame(BaseFrame owner, TypeOfStructure<S> type) {
 		super(owner, UIUtils.getFrameTitle(type));
 
 		this.type = type;
-		this.records = records;
+		this.database = ProjectConfiguration.get().getDatabase();
 
 		initialize();
 	}
@@ -64,7 +66,7 @@ public class BaseStructuresTableFrame<S extends ValueOfStructure<S>> extends Bas
 	}
 
 	private JTable createTable() {
-		model = new RecordsTableModel<S>(this, type, records);
+		model = new RecordsTableModel<S>(this, type);
 
 		JTable table = new JTable(model);
 
@@ -79,9 +81,12 @@ public class BaseStructuresTableFrame<S extends ValueOfStructure<S>> extends Bas
 
 	@Override
 	protected void doUpdateData() {
+		List<S> records = database.list(type);
+
 		String text = "Count: " + records.size();
 		lblCount.setText(text);
 
+		model.setRecords(records);
 		model.fireTableDataChanged();
 	}
 

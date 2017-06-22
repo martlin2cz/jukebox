@@ -21,8 +21,8 @@ public abstract class StructureModel<S extends ValueOfStructure<S>> {
 	private final Map<String, Attribute<?>> allAttributes;
 	private String description; // TODO make it final
 
-	public StructureModel(String name, TypeOfStructure<S> type, List<Attribute<?>> onlyPrimaryAttributes, List<Attribute<?>> onlySecondaryAttributes,
-			List<Attribute<?>> onlyTernaryAttributes) {
+	public StructureModel(String name, TypeOfStructure<S> type, List<Attribute<?>> onlyPrimaryAttributes,
+			List<Attribute<?>> onlySecondaryAttributes, List<Attribute<?>> onlyTernaryAttributes) {
 		super();
 		this.name = name;
 		this.type = type;

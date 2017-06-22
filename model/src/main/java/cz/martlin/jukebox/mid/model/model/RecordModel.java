@@ -12,8 +12,9 @@ public class RecordModel<I extends SimpleValue, R extends Record<I, R>> //
 
 	private final Attribute<I> identifierAttribute;
 
-	public RecordModel(String name, TypeOfRecord<R> type, Attribute<I> identifierAttribute, List<Attribute<?>> onlyPrimaryAttributes,
-			List<Attribute<?>> onlySecondaryAttributes, List<Attribute<?>> onlyTernaryAttributes) {
+	public RecordModel(String name, TypeOfRecord<R> type, Attribute<I> identifierAttribute,
+			List<Attribute<?>> onlyPrimaryAttributes, List<Attribute<?>> onlySecondaryAttributes,
+			List<Attribute<?>> onlyTernaryAttributes) {
 		super(name, type, onlyPrimaryAttributes, onlySecondaryAttributes, onlyTernaryAttributes);
 
 		this.identifierAttribute = identifierAttribute;

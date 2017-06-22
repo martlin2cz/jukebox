@@ -3,15 +3,14 @@ package cz.martlin.jukebox.out.gui.swing.util;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
 import cz.martlin.jukebox.out.db.Database;
-import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
-import cz.martlin.jukebox.rest.ProjectConfiguration;
+import cz.martlin.jukebox.out.gui.swing.impl.SwingGuiProvider;
+import cz.martlin.jukebox.out.rest.ProjectConfiguration;
 
 public class Actions {
 
@@ -65,7 +64,7 @@ public class Actions {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			GUIProvider<JComponent, BaseFrame> provider = ProjectConfiguration.get().getGuiProvider();
+			SwingGuiProvider provider = ProjectConfiguration.get().getGui();
 			@SuppressWarnings("unchecked")
 			TypeOfStructure<S> type = (TypeOfStructure<S>) structure.getBaseType();
 			BaseFrame frame = provider.getFrameForRecord(owner, type, structure);
@@ -79,13 +78,13 @@ public class Actions {
 		private static final long serialVersionUID = 5336329574439384927L;
 
 		private final BaseFrame owner;
-		private final GUIProvider<JComponent, BaseFrame> provider;
+		private final SwingGuiProvider provider;
 		private final TypeOfStructure<S> type;
 
 		public AddAction(BaseFrame owner, TypeOfStructure<S> type) {
 			super("Add");
 			this.owner = owner;
-			this.provider = ProjectConfiguration.get().getGuiProvider();
+			this.provider = ProjectConfiguration.get().getGui();
 			this.type = type;
 		}
 

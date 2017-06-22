@@ -1,7 +1,5 @@
 package cz.martlinorg.testapp1.gui.swing;
 
-import java.util.List;
-
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -13,14 +11,14 @@ import cz.martlin.jukebox.mid.domains.Identificator;
 import cz.martlin.jukebox.mid.type.SimpleType;
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
-import cz.martlin.jukebox.out.gui.provider.GUIProvider;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
+import cz.martlin.jukebox.out.gui.swing.impl.SwingGuiProvider;
 import cz.martlin.jukebox.rest.exceptions.UnknownTypeException;
 import cz.martlinorg.testapp1.dataobj.Person;
 import cz.martlinorg.testapp1.gui.swing.frames.detail.JPersonFrame;
 import cz.martlinorg.testapp1.gui.swing.frames.tables.JPersonsFrame;
 
-public class SwingProvider implements GUIProvider<JComponent, BaseFrame> {
+public class SwingProvider implements SwingGuiProvider {
 
 	@Override
 	public JComponent getComponentFor(SimpleType<?> type) {
@@ -74,16 +72,15 @@ public class SwingProvider implements GUIProvider<JComponent, BaseFrame> {
 	@Override
 	public <S extends ValueOfStructure<S>> BaseFrame //
 			getFrameForRecord(BaseFrame owner, TypeOfStructure<S> type, S structureOrNull) {
-		
+
 		return new JPersonFrame(owner, (TypeOfStructure<Person>) type, (Person) structureOrNull);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <S extends ValueOfStructure<S>> BaseFrame //
-			getFrameFor(BaseFrame owner, TypeOfStructure<S> type, List<S> structures) {
-		
-		return new JPersonsFrame(owner, (List<Person>) structures);
+			getFrameFor(BaseFrame owner, TypeOfStructure<S> type) {
+
+		return new JPersonsFrame(owner);
 	}
 
 }

@@ -1,6 +1,5 @@
 package cz.martlin.jukebox.out.dataobj;
 
-import cz.martlin.jukebox.mid.type.BaseType;
 import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
 
@@ -14,7 +13,7 @@ public class BaseStructure<V extends BaseStructure<V>> implements ValueOfStructu
 	}
 
 	@Override
-	public BaseType getBaseType() {
+	public TypeOfStructure<V> getTypeOfStructure() {
 		return type;
 	}
 

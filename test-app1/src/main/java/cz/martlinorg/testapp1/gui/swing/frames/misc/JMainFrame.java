@@ -3,18 +3,14 @@ package cz.martlinorg.testapp1.gui.swing.frames.misc;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import cz.martlin.jukebox.mid.types.TypeOfRecord;
-import cz.martlin.jukebox.out.db.Database;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseFrame;
 import cz.martlin.jukebox.out.gui.swing.frames.BaseStructuresTableFrame;
-import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
-import cz.martlin.jukebox.rest.ProjectConfiguration;
+import cz.martlin.jukebox.out.gui.swing.impl.UIUtils;
 import cz.martlinorg.testapp1.dataobj.Person;
 import cz.martlinorg.testapp1.gui.swing.frames.tables.JPersonsFrame;
 
@@ -29,16 +25,13 @@ public class JMainFrame extends BaseFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			List<Person> persons = database.list(new TypeOfRecord<>(Person.class));
-			BaseStructuresTableFrame<Person> frame = new JPersonsFrame(owner, persons);
+			BaseStructuresTableFrame<Person> frame = new JPersonsFrame(owner);
 			frame.openFrame();
 		}
 
 	}
 
 	private static final long serialVersionUID = -6749129619751353870L;
-
-	private final Database database = ProjectConfiguration.get().getDatabase();
 
 	public JMainFrame() {
 		super(null, UIUtils.getMainFrameTitle());

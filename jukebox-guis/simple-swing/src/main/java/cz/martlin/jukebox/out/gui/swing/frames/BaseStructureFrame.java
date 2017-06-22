@@ -18,11 +18,11 @@ import cz.martlin.jukebox.mid.types.TypeOfStructure;
 import cz.martlin.jukebox.mid.value.SimpleValue;
 import cz.martlin.jukebox.mid.values.ValueOfStructure;
 import cz.martlin.jukebox.out.db.Database;
-import cz.martlin.jukebox.out.gui.provider.GUIProvider;
+import cz.martlin.jukebox.out.gui.swing.impl.SwingGuiProvider;
+import cz.martlin.jukebox.out.gui.swing.impl.UIUtils;
 import cz.martlin.jukebox.out.gui.swing.util.Actions;
-import cz.martlin.jukebox.out.gui.swing.util.UIUtils;
 import cz.martlin.jukebox.out.gui.swing.validation.ValidationReport;
-import cz.martlin.jukebox.rest.ProjectConfiguration;
+import cz.martlin.jukebox.out.rest.ProjectConfiguration;
 
 public abstract class BaseStructureFrame<S extends ValueOfStructure<S>> extends BaseFrame {
 
@@ -30,7 +30,7 @@ public abstract class BaseStructureFrame<S extends ValueOfStructure<S>> extends 
 
 	protected final Database database;
 	protected final StructureModel<S> model;
-	private final GUIProvider<JComponent, BaseFrame> provider;
+	private final SwingGuiProvider provider;
 	protected final S structure;
 
 	public BaseStructureFrame(BaseFrame owner, TypeOfStructure<S> type, S structure) {
@@ -39,7 +39,7 @@ public abstract class BaseStructureFrame<S extends ValueOfStructure<S>> extends 
 		ProjectConfiguration config = ProjectConfiguration.get();
 		this.database = config.getDatabase();
 		this.model = config.getModel().getModelOf(type);
-		this.provider = config.getGuiProvider();
+		this.provider = config.getGui();
 
 		this.structure = structure;
 	}

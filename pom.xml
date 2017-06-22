@@ -13,28 +13,20 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-<!-- 		<java.source.encoding>UTF-8</java.source.encoding> -->
-
-		<jukebox.commons.version>0.1.0</jukebox.commons.version>
-		<jukebox.types.version>0.1.0</jukebox.types.version>
-		<jukebox.domains.version>0.1.0</jukebox.domains.version>
-		<jukebox.dataobj.version>0.1.0</jukebox.dataobj.version>
-		<jukebox.model.version>0.1.0</jukebox.model.version>
-
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+
 	<modules>
-	<!-- 
-		
-		
-		<module>gui</module>
-		
-		 -->
+		<!-- <module>gui</module> -->
 		<module>jukebox-commons</module>
 		<module>types</module>
 		<module>domains</module>
 		<module>dataobj</module>
 		<module>model</module>
 		<module>compiler</module>
-		
+
+		<module>jukebox-databases</module>
+		<module>jukebox-app</module>
 	</modules>
 </project>

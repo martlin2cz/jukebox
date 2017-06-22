@@ -6,6 +6,4 @@ import cz.martlin.jukebox.mid.values.ValueOfDomain;
 
 public interface Domain<D extends Domain<D>> extends ValueOfDomain<D>, Serializable {
 
-	
-
 }
